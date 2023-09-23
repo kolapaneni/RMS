@@ -1,0 +1,12 @@
+{% extends 'room/base.html' %}
+
+{% block content %}
+  <h2>{% if form.instance.pk %}Update{% else %}Create{% endif %} Overridden Room Rate</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button class="save" type="submit">Save</button>
+  </form>
+  <a href="{% url 'overridden_list' %}">Back to Overridden Room Rates</a> / <a href="{% url 'home_page' %}">Back to Home Page</a>
+{% endblock %}

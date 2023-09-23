@@ -1,0 +1,24 @@
+{% extends 'room/base.html' %}
+
+{% block content %}
+  <h2>Final Room Rate Calculation</h2>
+  <p>Room Name: {{ room_id }}</p>
+  <p>Start Date: {{ start_date }}</p>
+  <p>End Date: {{ end_date }}</p>
+  <p>Final (Lowest) Rate: </p>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Rate</th>
+    </tr>
+    {% for room, rate in final_rate.items %}
+      <tr>
+        <td>Date {{ room }}</td>
+        <td>{{ rate }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  <a href="{% url 'room_rate_list' %}">Back to Room Rates</a> /
+  <a href="{% url 'filter_room_rates' %}">Back to filter</a> /
+  <a href="{% url 'home_page' %}">Back to Home Page</a>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'room/base.html' %}
+
+{% block content %}
+  <h2> Discount </h2>
+  <a href="{% url 'discount_create' %}">Add Discount </a>
+  <ul>
+    {% for discount in object_list %}
+          <li class="dicount-item">
+        <div class="hotel">Discount Name: {{ discount.discount_name }}</div>
+        <div class="hotel">Discount Type: {{ discount.discount_type }}</div>
+            <div class="hotel">Discount Value: {{ discount.discount_value }}</div>
+        <div class="actions">
+          <a href="{% url 'discount_update' discount.pk %}">Edit</a>
+          <a href="{% url 'discount_delete' discount.pk %}">Delete</a>
+        </div>
+      </li>
+    {% empty %}
+      <li>No Discount available.</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'home_page' %}" style="margin-top:10px;display:inline-block">Back to Home Page</a>
+{% endblock %}

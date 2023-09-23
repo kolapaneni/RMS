@@ -1,0 +1,12 @@
+{% extends 'room/base.html' %}
+
+{% block content %}
+  <h2>Filter Room Rates</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Calculate Final Rate</button>
+  </form>
+  <a href="{% url 'filter_room_rates' %}">Back to filter</a>
+  <a href="{% url 'home_page' %}">Back to Home Page</a>
+{% endblock %}

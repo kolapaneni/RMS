@@ -1,0 +1,22 @@
+{% extends 'room/base.html' %}
+
+{% block content %}
+  <h2>Room Rates</h2>
+  <a href="{% url 'room_rate_create' %}">Add Room Rate</a>
+  <ul>
+    {% for room_rate in object_list %}
+      <li class="room-rate-item">
+        <div class="hotel">Room Name: {{ room_rate.room_name }}</div>
+        <div class="hotel">Default Rate: {{ room_rate.default_rate }}</div>
+        <div class="actions">
+          <a href="{% url 'room_rate_update' room_rate.pk %}">Edit</a>
+          <a href="{% url 'room_rate_delete' room_rate.pk %}">Delete</a>
+        </div>
+      </li>
+    {% empty %}
+      <li>No room rates available.</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'home_page' %}" style="margin-top:10px;display:inline-block">Back to Home Page</a>
+{% endblock %}

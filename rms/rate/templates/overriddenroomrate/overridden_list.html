@@ -1,0 +1,23 @@
+{% extends 'room/base.html' %}
+
+{% block content %}
+  <h2>Overridden Room Rates</h2>
+  <a href="{% url 'overridden_create' %}">Add Overridden Room Rate</a>
+  <ul>
+    {% for overridden_room_rate in object_list %}
+    <li class="overridden-room-rate-item">
+        <div class="hotel">Room Name: {{ overridden_room_rate.room_rate }}</div>
+        <div class="hotel">Overridden Rate: {{ overridden_room_rate.overridden_rate }}</div>
+              <div class="hotel">Stay Date: {{ overridden_room_rate.stay_date }}</div>
+        <div class="actions">
+          <a href="{% url 'overridden_update' overridden_room_rate.pk %}">Edit</a>
+          <a href="{% url 'overridden_delete' overridden_room_rate.pk %}">Delete</a>
+        </div>
+      </li>
+    {% empty %}
+      <li>No Overridden room rates available.</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'home_page' %}" style="margin-top:10px;display:inline-block">Back to Home Page</a>
+{% endblock %}
